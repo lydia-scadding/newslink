@@ -1,11 +1,11 @@
 one:
   title: link1
-  url: link1.com
+  url: http://www.link1.com
   description: some description
   user: regular
 
 two:
   title: link2
-  url: link2.com
+  url: http://www.link2.com
   description: some description
   user: regular
