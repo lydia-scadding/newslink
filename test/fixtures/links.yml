@@ -1,0 +1,7 @@
+<% 5.times do |n| %>
+link_<%= n %>:
+  title: <%= "link#{n}" %>
+  url: <%= "link#{n}.com" %>
+  description: some description
+  user: regular
+<% end %>
