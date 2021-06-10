@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "invalid if body is blank" do
+    comment = Comment.new(body: "")
+    comment.valid?
+    assert_not comment.errors[:body].empty?
+  end
 end
