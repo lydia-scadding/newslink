@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :links, dependent: :destroy
   has_many :comments
+  has_many :votes
 
   validates :username,
             presence: true,

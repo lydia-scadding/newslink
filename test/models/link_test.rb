@@ -1,6 +1,24 @@
 require 'test_helper'
 
 class LinkTest < ActiveSupport::TestCase
+  test "has many comments" do
+    assert_equal 5, links(:one).comments.size
+  end
+
+  test "should destroy comments when destroying self" do
+    links(:one).destroy
+    assert_equal 0, Comment.count
+  end
+
+  test "has many votes" do
+    assert_equal 1, links(:one).votes.size
+  end
+
+  test "should destroy votes when destroying self" do
+    Link.destroy_all
+    assert_equal 0, Vote.count
+  end
+
   test "has a title" do
     assert_equal "link1", links(:one).title
   end
@@ -22,14 +40,5 @@ class LinkTest < ActiveSupport::TestCase
     link = Link.new(title: "some article", url: url)
     link.valid?
     assert_not link.errors[:url].empty?
-  end
-
-  test "has many comments" do
-    assert_equal 5, links(:one).comments.size
-  end
-
-  test "should destroy comments when destroying self" do
-    links(:one).destroy
-    assert_equal 0, Comment.count
   end
 end

@@ -1,0 +1,9 @@
+upvote:
+  value: 1
+  link: one
+  user: commenter
+
+downvote:
+  value: -1
+  link: two
+  user: commenter
