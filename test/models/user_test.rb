@@ -31,4 +31,8 @@ class UserTest < ActiveSupport::TestCase
     users(:regular).destroy
     assert_equal 0, Link.count
   end
+
+  test "has many comments" do
+    assert_equal 5, users(:regular).comments.size
+  end
 end

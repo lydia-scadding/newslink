@@ -1,0 +1,6 @@
+<% 1.upto(5) do |n| %>
+comment<%= n %>:
+  body: MyText
+  link: one
+  user: commenter
+<% end %>
