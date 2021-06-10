@@ -33,6 +33,6 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "has many comments" do
-    assert_equal 5, users(:regular).comments.size
+    assert_equal 5, users(:commenter).comments.size
   end
 end

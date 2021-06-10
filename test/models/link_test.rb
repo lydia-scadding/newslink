@@ -23,4 +23,13 @@ class LinkTest < ActiveSupport::TestCase
     link.valid?
     assert_not link.errors[:url].empty?
   end
+
+  test "has many comments" do
+    assert_equal 5, links(:one).comments.size
+  end
+
+  test "should destroy comments when destroying self" do
+    links(:one).destroy
+    assert_equal 0, Comment.count
+  end
 end
