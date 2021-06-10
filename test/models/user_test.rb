@@ -5,13 +5,30 @@ class UserTest < ActiveSupport::TestCase
     assert_equal "Lydia", users(:regular).username
   end
 
-  test "username cannot be blank" do
-    user = User.new
+  test "invalid if username is blank" do
+    user = User.new(username: "")
+    user.valid?
+    assert_not user.errors[:username].empty?
+  end
+
+  test "invalid if the username is too short (3 characters minimum)" do
+    user = User.new(username: "me")
+    user.valid?
+    assert_not user.errors[:username].empty?
+  end
+
+  test "invalid if username is already in use" do
+    user = User.new(username: "Lydia")
     user.valid?
     assert_not user.errors[:username].empty?
   end
 
   test "has many links" do
     assert_equal 2, users(:regular).links.size
+  end
+
+  test "should destroy links when destroying self" do
+    users(:regular).destroy
+    assert_equal 0, Link.count
   end
 end
