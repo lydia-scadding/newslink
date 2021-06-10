@@ -17,8 +17,8 @@ class UserTest < ActiveSupport::TestCase
     assert_not user.errors[:username].empty?
   end
 
-  test "invalid if username is already in use" do
-    user = User.new(username: "Lydia")
+  test "invalid if username is already in use (case insensitive)" do
+    user = User.new(username: "lydia")
     user.valid?
     assert_not user.errors[:username].empty?
   end
