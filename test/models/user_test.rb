@@ -12,6 +12,6 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "has many links" do
-    assert_equal 5, users(:regular).links.size
+    assert_equal 2, users(:regular).links.size
   end
 end
