@@ -6,7 +6,10 @@ class User < ApplicationRecord
 
   has_many :links, dependent: :destroy
 
-  validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3 }
+  validates :username,
+            presence: true,
+            uniqueness: { case_sensitive: false },
+            length: { minimum: 3 }
 
   private
 
