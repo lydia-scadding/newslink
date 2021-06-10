@@ -18,7 +18,13 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test redirection for a protected route
+  test "redirect if not logged in (protected route)" do
+    sign_out :user
+    get new_link_path
+    assert_response :redirect
+    follow_redirect!
+    assert_select "h2", "Log in"
+  end
   # other CRUD actions
   # LATER: all users can visit the newest links page
   # LATER: all users can visit the all comments page
