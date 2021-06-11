@@ -9,5 +9,5 @@ class Link < ApplicationRecord
 
   validates :url,
             presence: true,
-            format: { with: %r{\Ahttps?://} }, allow_blank: true
+            format: { with: %r{\Ahttps?://} }
 end

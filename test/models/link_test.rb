@@ -36,7 +36,7 @@ class LinkTest < ActiveSupport::TestCase
   end
 
   test "invalid if url is blank" do
-    link = Link.new(title: "my link", url: "")
+    link = Link.new(title: "my link")
     link.valid?
     assert_not link.errors[:url].empty?
   end
