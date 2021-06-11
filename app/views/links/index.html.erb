@@ -2,6 +2,7 @@
   <%= link_to link.url, target: "_blank" do %>
     <h3><%= link.title %></h3>
   <% end %>
+  <span>by <%= link.user.username %> | </span>
   <span><%= time_ago_in_words(link.created_at) %> ago | </span>
   <span>
     <%= link_to link_path(link) do %>
