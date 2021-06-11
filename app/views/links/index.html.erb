@@ -6,7 +6,8 @@
   <span><%= time_ago_in_words(link.created_at) %> ago | </span>
   <span>
     <%= link_to link_path(link) do %>
-      <%= link.comments.size %> comments</span>
+      <%= link.comments.size %> comments
     <% end %>
+  </span>
   <hr>
 <% end %>

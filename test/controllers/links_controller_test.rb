@@ -25,7 +25,7 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_select "h2", "Log in"
   end
-  # other CRUD actions
+
   test "can visit the new link page" do
     get new_link_path
     assert_response :success
@@ -44,25 +44,33 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "can visit the edit page" do
+  test "can visit the edit page if authorized" do
     get edit_link_path(@link)
     assert_response :success
   end
 
-  test "can update link" do
+  test "cannot visit the edit page if did not create the record" do
+    sign_out :user
+    sign_in users(:commenter)
+    get edit_link_path(@link)
+    assert_redirected_to root_path
+    assert_equal "You are not authorized to perform this action.", flash[:alert]
+  end
+
+  test "can update link if authorized" do
     put link_url(@link), params: { link: { title: "New title", url: "http://www.link1.com"}}
     assert_redirected_to link_url(@link)
     @link.reload
     assert_equal "New title", @link.title
   end
 
-  test "can destroy link" do
+  test "can destroy link if authorized" do
     assert_difference('Link.count', -1) do
       delete link_url(@link)
     end
     assert_redirected_to root_url
   end
-  # Can't e.g. edit a link if not authorized
+
   # LATER: all users can visit the newest links page
   # LATER: all users can visit the all comments page
 end
