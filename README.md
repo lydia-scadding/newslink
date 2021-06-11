@@ -1,4 +1,4 @@
-A Hacker News clone built with TDD.
+A platform for new developers to share useful resources - a Hacker News clone. Built with TDD.
 
 TODO: 
 * Add Comment model and functionality
