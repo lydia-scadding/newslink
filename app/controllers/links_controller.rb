@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_link, only: [:edit, :update, :destroy]
 
   def index
     @links = Link.includes(:user, :comments)
@@ -23,11 +24,25 @@ class LinksController < ApplicationController
 
   def edit; end
 
-  def update; end
+  def update
+    if @link.update(link_params)
+      redirect_to link_path(@link) # Later - redirect to index if get rid of show page
+    else
+      render :edit
+    end
+  end
 
-  def destroy; end
+  def destroy
+    @link.destroy
+
+    redirect_to root_path
+  end
 
   private
+
+  def set_link
+    @link = Link.find(params[:id])
+  end
 
   def link_params
     params.require(:link).permit(:title, :url, :description)
