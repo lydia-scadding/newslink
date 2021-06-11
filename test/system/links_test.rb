@@ -30,10 +30,10 @@ class LinksTest < ApplicationSystemTestCase
   test "can delete a project" do
     visit link_url(@link)
 
-    page.accept_confirm do
+    accept_confirm do
       click_on "Delete"
     end
 
-    assert_equal root_path, page.current_path
+    assert_current_path(root_path)
   end
 end
