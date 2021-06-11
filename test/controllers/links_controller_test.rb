@@ -49,7 +49,7 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "cannot visit the edit page if did not create the record" do
+  test "cannot visit the edit page if not authorized" do
     sign_out :user
     sign_in users(:commenter)
     get edit_link_path(@link)
