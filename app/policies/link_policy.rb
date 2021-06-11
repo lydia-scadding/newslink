@@ -1,7 +1,7 @@
 class LinkPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.includes(:user, :comments)
+      scope.all
     end
   end
 
