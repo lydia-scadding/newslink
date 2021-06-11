@@ -7,5 +7,29 @@ class LinksController < ApplicationController
 
   def show; end
 
-  def new; end
+  def new
+    @link = Link.new
+  end
+
+  def create
+    @link = current_user.links.new(link_params)
+
+    if @link.save
+      redirect_to link_path(@link) # Later - redirect to index if get rid of show page
+    else
+      render :new
+    end
+  end
+
+  def edit; end
+
+  def update; end
+
+  def destroy; end
+
+  private
+
+  def link_params
+    params.require(:link).permit(:title, :url, :description)
+  end
 end

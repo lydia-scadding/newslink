@@ -26,6 +26,17 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
     assert_select "h2", "Log in"
   end
   # other CRUD actions
+  test "can visit the new link page" do
+    get new_link_path
+    assert_response :success
+  end
+
+  test "can create a link" do
+    assert_difference('Link.count') do
+      post links_url, params: { link: { title: "Interesting link", url: "https://medium.com/"}}
+    end
+    assert_redirected_to link_url(Link.last)
+  end
   # LATER: all users can visit the newest links page
   # LATER: all users can visit the all comments page
 
