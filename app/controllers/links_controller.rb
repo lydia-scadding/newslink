@@ -18,7 +18,7 @@ class LinksController < ApplicationController
     authorize @link
 
     if @link.save
-      redirect_to link_path(@link) # Later - redirect to index if get rid of show page
+      redirect_to link_path(@link), notice: "Link successfully created" # Later - redirect to index if get rid of show
     else
       render :new
     end
@@ -28,7 +28,7 @@ class LinksController < ApplicationController
 
   def update
     if @link.update(link_params)
-      redirect_to link_path(@link) # Later - redirect to index if get rid of show page
+      redirect_to link_path(@link), notice: "Link successfully updated" # Later - redirect to index if get rid of show
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class LinksController < ApplicationController
   def destroy
     @link.destroy
 
-    redirect_to root_path
+    redirect_to root_path, notice: "Link successfully deleted"
   end
 
   private
