@@ -6,5 +6,10 @@ commenter:
   username: User
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
+admin:
+  username: admin
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  admin: true
+
 
 
