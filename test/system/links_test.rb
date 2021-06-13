@@ -29,11 +29,11 @@ class LinksTest < ApplicationSystemTestCase
     assert_text "Updated Title"
   end
 
-  test "can delete a project" do
+  test "can delete a link" do
     visit link_url(@link)
 
     accept_confirm do
-      click_on "Delete"
+      within(".link-info") { click_on "Delete" }
     end
 
     assert_current_path(root_path)
