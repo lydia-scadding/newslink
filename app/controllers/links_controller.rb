@@ -12,7 +12,6 @@ class LinksController < ApplicationController
   end
 
   def new
-    @comments = @link.comments.includes(:user)
     @link = Link.new
     authorize @link
   end
