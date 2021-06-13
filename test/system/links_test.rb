@@ -20,7 +20,9 @@ class LinksTest < ApplicationSystemTestCase
   test "can update a link" do
     visit link_url(@link)
 
-    click_on "Edit"
+    within(".link-info") do
+      click_on "Edit"
+    end
     fill_in "Title", with: "Updated Title"
     click_on "Update Link"
 

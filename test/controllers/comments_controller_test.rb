@@ -25,12 +25,12 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test "can update link if authorized" do
-  #   put link_url(@link), params: { link: { title: "New title", url: "http://www.link1.com"}}
-  #   assert_redirected_to link_url(@link)
-  #   @link.reload
-  #   assert_equal "New title", @link.title
-  # end
+  test "can update comment if authorized" do
+    put comment_url(@comment), params: { comment: { body:"Different text" }}
+    assert_redirected_to link_url(@comment.link)
+    @comment.reload
+    assert_equal "Different text", @comment.title
+  end
 
   # test "can destroy link if authorized" do
   #   assert_difference('Link.count', -1) do
