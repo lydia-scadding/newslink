@@ -1,0 +1,4 @@
+<%= simple_form_for [@link, @comment] do |f| %>
+  <%= f.input :body, label: false, placeholder: "Enter comment" %>
+  <%= f.button :submit %>
+<% end %>

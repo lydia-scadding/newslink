@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :set_comment, only: [:edit]
+
   def create
     @link = Link.find_by(id: params[:link_id])
     @comment = @link.comments.new(user: current_user, body: comment_params[:body])
@@ -11,7 +13,14 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit; end
+
   private
+
+  def set_comment
+    @comment = Comment.find(params[:id])
+    authorize @comment
+  end
 
   def comment_params
     params.require(:comment).permit(:body)
