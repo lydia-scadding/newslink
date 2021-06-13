@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:edit]
+  before_action :set_comment, only: [:edit, :update]
 
   def create
     @link = Link.find_by(id: params[:link_id])
@@ -14,6 +14,14 @@ class CommentsController < ApplicationController
   end
 
   def edit; end
+
+  def update
+    if @comment.update(comment_params)
+      redirect_to link_path(@comment.link), notice: "Comment successfully updated"
+    else
+      render :edit
+    end
+  end
 
   private
 
