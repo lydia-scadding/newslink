@@ -32,10 +32,10 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "Different text", @comment.body
   end
 
-  # test "can destroy link if authorized" do
-  #   assert_difference('Link.count', -1) do
-  #     delete link_url(@link)
-  #   end
-  #   assert_redirected_to root_url
-  # end
+  test "can destroy comment if authorized" do
+    assert_difference('Comment.count', -1) do
+      delete comment_url(@comment)
+    end
+    assert_redirected_to link_url(@comment.link)
+  end
 end

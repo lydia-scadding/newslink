@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:edit, :update]
+  before_action :set_comment, only: [:edit, :update, :destroy]
 
   def create
     @link = Link.find_by(id: params[:link_id])
@@ -21,6 +21,12 @@ class CommentsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @comment.destroy
+
+    redirect_to link_path(@comment.link), notice: "Comment successfully deleted"
   end
 
   private
