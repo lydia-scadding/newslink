@@ -1,7 +1,3 @@
-.link-card {
-  padding: 6px 0;
-}
-
 .link-title {
   font-size: 18px;
   color: $hn-green;
@@ -28,16 +24,12 @@
   }
 }
 
-.votes {
-  background-color: rgb(252, 248, 250);
-}
-
 .votes p {
   margin-bottom: 0;
 }
 
 .link-main {
-  margin-bottom: 2px;
+  padding: 18px 0;
 }
 
 .link-card i {
