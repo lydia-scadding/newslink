@@ -6,9 +6,13 @@ class LinksController < ApplicationController
     @links = policy_scope(Link).includes(:user, :comments)
   end
 
-  def show; end
+  def show
+    @comments = @link.comments.includes(:user)
+    @comment = Comment.new
+  end
 
   def new
+    @comments = @link.comments.includes(:user)
     @link = Link.new
     authorize @link
   end
