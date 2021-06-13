@@ -14,8 +14,13 @@
 
 body {
   background-color: white;
+  color: $hn-grey;
 }
 
-.background-pink {
-  background-color: #F8F8F8; // was #F8eded
+.background-light {
+  background-color: rgba(252, 248, 250, 0.6); // was #F8eded
+}
+
+hr {
+  margin: 0;
 }

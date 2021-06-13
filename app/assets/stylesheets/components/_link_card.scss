@@ -1,0 +1,48 @@
+.link-card {
+  padding: 6px 0;
+}
+
+.link-title {
+  font-size: 20px;
+  color: $hn-green;
+  &:hover {
+    color: $hn-green;
+  }
+}
+
+.link-url {
+  font-weight: lighter;
+  font-size: 16px;
+  color: grey;
+}
+
+.link-data {
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+.link-data a {
+  color: $hn-green;
+  &:hover {
+    color: $hn-green;
+  }
+}
+
+.votes {
+  background-color: rgb(252, 248, 250);
+}
+
+.votes p {
+  margin-bottom: 0;
+}
+
+.link-main {
+  margin-bottom: 3px;
+}
+
+.link-card i {
+  &:hover {
+    color: $hn-blue;
+    cursor: pointer;
+  }
+}
