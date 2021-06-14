@@ -2,11 +2,11 @@
   <div class="d-flex align-items-center">
     <div class="votes text-center px-3">
       <%= link_to link_votes_path(link, value: 1), method: :post do %>
-        <i class="fas fa-caret-up"></i>
+        <i class="fas fa-caret-up <%= current_user.upvoted?(link) ? 'voted' : '' %>"></i>
       <% end %>
       <p><%= link.points %></p>
       <%= link_to link_votes_path(link, value: -1), method: :post do %>
-        <i class="fas fa-caret-down"></i>
+        <i class="fas fa-caret-down <%= current_user.downvoted?(link) ? 'voted' : '' %>"></i>
       <% end %>
     </div>
     <div class="link-main">
