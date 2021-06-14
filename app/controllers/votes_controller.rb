@@ -11,7 +11,12 @@ class VotesController < ApplicationController
     authorize @vote
     @link.calc_points
 
-    redirect_back fallback_location: links_path
+    respond_to do |format|
+      format.html { redirect_back fallback_location: links_path }
+      format.js
+    end
+
+    # redirect_back fallback_location: links_path
   end
 
   private
