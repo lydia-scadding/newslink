@@ -20,8 +20,8 @@ class LinksTest < ApplicationSystemTestCase
   test "can update a link" do
     visit link_url(@link)
 
-    within(".link-info") do
-      click_on "Edit"
+    within(".link-card") do
+      click_on "edit"
     end
     fill_in "Title", with: "Updated Title"
     click_on "Update Link"
@@ -33,7 +33,7 @@ class LinksTest < ApplicationSystemTestCase
     visit link_url(@link)
 
     accept_confirm do
-      within(".link-info") { click_on "Delete" }
+      within(".link-card") { click_on "delete" }
     end
 
     assert_current_path(root_path)
