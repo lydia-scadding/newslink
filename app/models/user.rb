@@ -13,6 +13,14 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false },
             length: { minimum: 3 }
 
+  def voted?(link)
+    votes.exists?(link: link)
+  end
+
+  def remove_vote(link)
+    vote = votes.find_by(link: link).destroy
+  end
+
   private
 
   def email_required?

@@ -1,11 +1,11 @@
 <div class="link-card">
   <div class="d-flex align-items-center">
     <div class="votes text-center px-3">
-      <%= link_to upvote_link_path(link), method: :post do %>
+      <%= link_to link_votes_path(link, value: 1), method: :post do %>
         <i class="fas fa-caret-up"></i>
       <% end %>
       <p><%= link.points %></p>
-      <%= link_to downvote_link_path(link), method: :post do %>
+      <%= link_to link_votes_path(link, value: -1), method: :post do %>
         <i class="fas fa-caret-down"></i>
       <% end %>
     </div>
