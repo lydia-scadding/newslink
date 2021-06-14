@@ -14,11 +14,21 @@
       <div class="link-data">
         <span>by <%= link.user.username %> | </span>
         <span><%= time_ago_in_words(link.created_at) %> ago | </span>
-        <span>
+        <span class="link-comments">
           <%= link_to link_path(link) do %>
             <%= link.comments.size %> comments
           <% end %>
         </span>
+        <% if params[:controller] == "links" && params[:action] == "show" %>
+          <% if user_signed_in? && policy(@link).edit? %>
+            <span class="link-action">
+               | <%= link_to 'edit', edit_link_path(@link) %> |
+            </span>
+            <span class="link-action">
+              <%= link_to 'delete', link_path(@link), method: :delete, data: { confirm: "Are you sure you want to delete this link?"} %>
+            </span>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
