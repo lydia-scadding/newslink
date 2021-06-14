@@ -1,0 +1,2 @@
+var votes = document.querySelector("#link-<%= @link.id %>-votes");
+votes.innerHTML = "<%=j render partial: 'links/votes', locals: {link: @link} %>";

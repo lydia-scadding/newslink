@@ -2,24 +2,26 @@ class VotesController < ApplicationController
   before_action :find_link
 
   def create
-    if current_user.voted?(@link)
-      @vote = current_user.votes.where(link: @link)
-      @vote.destroy_all
-    else
-      @vote = @link.votes.create(value: params[:value], user: current_user)
-    end
-    authorize @vote
+    create_or_destroy_vote_for(@link)
     @link.calc_points
 
     respond_to do |format|
       format.html { redirect_back fallback_location: links_path }
       format.js
     end
-
-    # redirect_back fallback_location: links_path
   end
 
   private
+
+  def create_or_destroy_vote_for(link)
+    if current_user.voted?(link)
+      @vote = current_user.votes.where(link: link)
+      @vote.destroy_all
+    else
+      @vote = @link.votes.create(value: params[:value], user: current_user)
+    end
+    authorize @vote
+  end
 
   def find_link
     @link = Link.find(params[:link_id])
