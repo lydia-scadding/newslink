@@ -4,6 +4,7 @@ class VotesController < ApplicationController
   def upvote
     @vote = @link.votes.create(value: 1, user: current_user)
     authorize @vote
+    @link.calc_points
 
     redirect_back fallback_location: links_path
   end
@@ -11,6 +12,7 @@ class VotesController < ApplicationController
   def downvote
     @vote = @link.votes.create(value: -1, user: current_user)
     authorize @vote
+    @link.calc_points
 
     redirect_back fallback_location: links_path
   end

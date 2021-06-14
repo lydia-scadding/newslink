@@ -10,4 +10,9 @@ class Link < ApplicationRecord
   validates :url,
             presence: true,
             format: { with: %r{\Ahttps?://} }
+
+  def calc_points
+    self.points = votes.sum(:value)
+    save
+  end
 end

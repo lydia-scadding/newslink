@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class VotesControllerTest < ActionDispatch::IntegrationTest
-
   setup do
     sign_in users(:regular)
     @link = links(:one)
@@ -22,4 +21,11 @@ class VotesControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     assert_equal -1, Vote.last.value
   end
+
+  # test "link points updates with new vote" do
+  #   assert_difference('@link.points') do
+  #     post upvote_link_url(@link)
+  #   end
+  # end
+
 end
