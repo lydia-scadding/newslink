@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   resources :links, except: :index do
     resources :comments, only: [:create]
+    member do
+      post "upvote"
+      post "downvote"
+    end
   end
 
   resources :comments, only: [:index, :edit, :update, :destroy]

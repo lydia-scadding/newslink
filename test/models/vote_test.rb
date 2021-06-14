@@ -24,4 +24,11 @@ class VoteTest < ActiveSupport::TestCase
     vote.valid?
     assert_not vote.errors[:value].empty?
   end
+
+  test "a user only has 1 vote per link" do
+    vote_one = Vote.create(user: users(:regular), link: links(:one), value: 1)
+    vote_two = Vote.new(user: users(:regular), link: links(:one), value: 1)
+    vote_two.valid?
+    assert_not vote_two.errors[:user].empty?
+  end
 end
