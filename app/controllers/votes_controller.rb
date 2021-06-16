@@ -4,6 +4,7 @@ class VotesController < ApplicationController
   def create
     create_or_destroy_vote_for(@link)
     @link.calc_points
+    @is_upvote = params[:value] == '1'
 
     respond_to do |format|
       format.html { redirect_back fallback_location: links_path }
@@ -19,6 +20,7 @@ class VotesController < ApplicationController
       @vote.destroy_all
     else
       @vote = @link.votes.create(value: params[:value], user: current_user)
+      @new_vote = true
     end
     authorize @vote
   end

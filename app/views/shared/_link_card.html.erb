@@ -1,7 +1,13 @@
 <div class="link-card">
   <div class="d-flex align-items-center">
-    <div class="votes text-center px-3" id="link-<%= link.id %>-votes">
-      <%= render "votes", link: link %>
+    <div class="votes text-center px-3" id="vote-actions-<%= link.id %>">
+      <%= link_to link_votes_path(link, value: 1), method: :post, remote: true do %>
+        <i class="fas fa-caret-up upvote <%= user_signed_in? && current_user.upvoted?(link) ? 'active' : '' %>"></i>
+      <% end %>
+      <p class="link-points"><%= link.points %></p>
+      <%= link_to link_votes_path(link, value: -1), method: :post, remote: true do %>
+        <i class="fas fa-caret-down downvote <%= user_signed_in? && current_user.downvoted?(link) ? 'active' : '' %>"></i>
+      <% end %>
     </div>
     <div class="link-main">
       <div>

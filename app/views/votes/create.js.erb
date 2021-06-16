@@ -1,2 +1,9 @@
-var votes = document.querySelector("#link-<%= @link.id %>-votes");
-votes.innerHTML = "<%=j render partial: 'links/votes', locals: {link: @link} %>";
+var votes = document.querySelector("#vote-actions-<%= @link.id %>");
+votes.querySelector(".link-points").innerText = <%= @link.points %>;
+votes.querySelectorAll(".upvote, .downvote").forEach(element => element.classList.remove("active"));
+
+<% if @new_vote && @is_upvote %>
+  votes.querySelector(".upvote").classList.add("active");
+<% elsif @new_vote %>
+  votes.querySelector(".downvote").classList.add("active");
+<% end %>

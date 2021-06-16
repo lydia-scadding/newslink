@@ -1,0 +1,19 @@
+.votes {
+  width: 44px;
+}
+
+.votes p {
+  margin-bottom: 0;
+}
+
+.votes i {
+  color: $hn-grey;
+  &:hover {
+    color: $hn-blue;
+    cursor: pointer;
+  }
+}
+
+i.active {
+  color: $hn-blue;
+}
