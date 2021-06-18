@@ -7,4 +7,8 @@ class Vote < ApplicationRecord
             inclusion: { in: [-1, 1] }
 
   validates :user, uniqueness: { scope: :link }
+
+  def calc_points
+    votes.sum(:value)
+  end
 end

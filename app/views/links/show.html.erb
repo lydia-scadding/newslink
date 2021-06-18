@@ -2,15 +2,13 @@
 
 <p class="pl-3 mb-3 link-description"><%= @link.description %></p>
 
-<% if user_signed_in? %>
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-lg-6">
-        <%= render "comments/form" %>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= render "comments/form" %>
     </div>
   </div>
-<% end %>
+</div>
 
 <% if @comments %>
   <div class="container comments">

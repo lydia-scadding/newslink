@@ -4,6 +4,7 @@ class VotesController < ApplicationController
   def create
     create_or_destroy_vote_for(@link)
     @is_upvote = params[:value] == '1'
+    @link.calc_points
 
     respond_to do |format|
       format.html { redirect_back fallback_location: links_path }
