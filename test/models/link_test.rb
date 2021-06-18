@@ -11,6 +11,7 @@ class LinkTest < ActiveSupport::TestCase
   end
 
   test "has many votes" do
+    links(:one).votes.create(value: 1, user: users(:commenter))
     assert_equal 1, links(:one).votes.size
   end
 
