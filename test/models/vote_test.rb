@@ -2,7 +2,8 @@ require 'test_helper'
 
 class VoteTest < ActiveSupport::TestCase
   test "has a value" do
-    assert_equal 1, votes(:upvote).value
+    vote = Vote.new(value: 1)
+    assert_equal 1, vote.value
   end
 
   test "invalid if value is blank" do
