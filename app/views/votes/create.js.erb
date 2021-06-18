@@ -1,4 +1,4 @@
-var votes = document.querySelector("#vote-actions-<%= @link.id %>");
+var votes = document.querySelector("#link-<%= @link.id %> .votes");
 votes.querySelector(".link-points").innerText = <%= @link.points %>;
 votes.querySelectorAll(".upvote, .downvote").forEach(element => element.classList.remove("active"));
 
@@ -7,3 +7,5 @@ votes.querySelectorAll(".upvote, .downvote").forEach(element => element.classLis
 <% elsif @new_vote %>
   votes.querySelector(".downvote").classList.add("active");
 <% end %>
+
+

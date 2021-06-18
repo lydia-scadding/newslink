@@ -12,8 +12,6 @@ class Link < ApplicationRecord
             format: { with: %r{\Ahttps?://} }
 
   def calc_points
-    # self.points = votes.sum(:value)
-    # save
     update_attribute(:points, votes.sum(:value))
   end
 end
