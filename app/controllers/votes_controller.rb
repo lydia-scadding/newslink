@@ -3,7 +3,6 @@ class VotesController < ApplicationController
 
   def create
     create_or_destroy_vote_for(@link)
-    @link.calc_points
     @is_upvote = params[:value] == '1'
 
     respond_to do |format|
