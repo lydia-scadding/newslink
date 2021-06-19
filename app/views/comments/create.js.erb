@@ -1,0 +1,4 @@
+var commentsDiv = document.querySelector(".comments");
+var formInput = document.querySelector("#comment_body");
+commentsDiv.insertAdjacentHTML('afterbegin', '<%=j render partial: "shared/comment_card", locals: {comment: @comment}%> ');
+formInput.value = "";

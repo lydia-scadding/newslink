@@ -6,10 +6,13 @@ class CommentsController < ApplicationController
     @comment = @link.comments.new(user: current_user, body: comment_params[:body])
     authorize @comment
 
-    if @comment.save
-      redirect_to @link, notice: "Comment successfully created"
-    else
-      redirect_to @link, notice: "Comment not saved. Ensure you have entered a comment."
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to @link, notice: "Comment successfully created" }
+        format.js
+      else
+        format.html { redirect_to @link, notice: "Comment not saved. Ensure you have entered a comment." }
+      end
     end
   end
 

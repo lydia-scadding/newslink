@@ -7,7 +7,7 @@ class LinksController < ApplicationController
   end
 
   def show
-    @comments = @link.comments.includes(:user)
+    @comments = @link.comments.includes(:user).order(created_at: :desc)
     @comment = Comment.new
   end
 
