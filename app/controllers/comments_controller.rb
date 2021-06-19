@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     @link = Link.find_by(id: params[:link_id])
-    @comment = @link.comments.new(user: current_user, body: comment_params[:body])
+    @comment = Comment.new(user: current_user, body: comment_params[:body], link: @link)
     authorize @comment
 
     respond_to do |format|
@@ -12,8 +12,15 @@ class CommentsController < ApplicationController
         format.js
       else
         format.html { redirect_to @link, notice: "Comment not saved. Ensure you have entered a comment." }
+        format.js { render action: "errors" }
       end
     end
+    # if @comment.save
+    #   redirect_to link_path(@link)
+    # else
+    #   @comments = @link.comments
+    #   render 'links/show'
+    # end
   end
 
   def edit; end

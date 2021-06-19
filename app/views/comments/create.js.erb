@@ -1,4 +1,13 @@
+var errorsDiv = document.querySelector(".invalid-feedback");
+if (errorsDiv) {
+  errorsDiv.style.display = 'none';
+  document.querySelector("#comment_body").classList.remove('is-invalid');
+}
+
 var commentsDiv = document.querySelector(".comments");
 var formInput = document.querySelector("#comment_body");
-commentsDiv.insertAdjacentHTML('afterbegin', '<%=j render partial: "shared/comment_card", locals: {comment: @comment}%> ');
+commentsDiv.insertAdjacentHTML('afterbegin', '<%=j render partial: "shared/comment_card", locals: { comment: @comment } %> ');
 formInput.value = "";
+var commentCount = document.querySelector("#link-<%= @link.id %>-comments");
+commentCount.innerHTML = "<%= pluralize @link.comments.size, 'comment' %>";
+
