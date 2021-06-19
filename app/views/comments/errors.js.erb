@@ -1,0 +1,2 @@
+var form = document.querySelector("#new_comment");
+form.innerHTML = "<%=j render partial: 'form', locals: { link: @link, comment: @comment } %>";

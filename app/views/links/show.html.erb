@@ -10,12 +10,13 @@
   </div>
 </div>
 
-<% if @comments %>
-  <div class="container comments">
+<div class="container comments">
+  <% if @comments %>
     <% @comments.each do |comment| %>
       <%= render "shared/comment_card", comment: comment %>
     <% end %>
-  </div>
-<% end %>
+  <% end %>
+</div>
+
 
 
