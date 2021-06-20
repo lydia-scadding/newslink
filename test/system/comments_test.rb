@@ -43,4 +43,12 @@ class CommentsTest < ApplicationSystemTestCase
 
     assert_selector ".comment-card", count: @link.comments.size
   end
+
+  test "comments form rerenders with errors" do
+    visit link_url(@link)
+
+    click_on "Create Comment"
+    assert_selector ".is-invalid"
+    assert_selector ".invalid-feedback"
+  end
 end
