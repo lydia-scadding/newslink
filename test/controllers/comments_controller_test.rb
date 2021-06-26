@@ -36,6 +36,6 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Comment.count', -1) do
       delete comment_url(@comment)
     end
-    assert_redirected_to link_url(@comment.link, anchor: "comments")
+    assert_redirected_to link_url(@comment.link)
   end
 end

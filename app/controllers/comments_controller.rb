@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
 
-    redirect_to link_path(@comment.link, anchor: "comments"), notice: "Comment successfully deleted"
+    redirect_to link_path(@comment.link), notice: "Comment successfully deleted"
   end
 
   private
