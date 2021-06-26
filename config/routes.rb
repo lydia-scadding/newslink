@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   resources :links, except: :index do
     resources :comments, only: [:create]
-    # resources :votes, only: [:create]
     member do
       post "upvote", to: "votes#upvote"
       post "downvote", to: "votes#downvote"

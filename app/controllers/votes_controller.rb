@@ -1,28 +1,8 @@
 class VotesController < ApplicationController
   before_action :find_link
 
-  # def create
-  #   create_or_destroy_vote_for(@link)
-  #   @is_upvote = params[:value] == '1'
-  #   @link.calc_points
-
-  #   respond_to do |format|
-  #     format.html { redirect_back fallback_location: links_path }
-  #     format.js
-  #   end
-  # end
-
   def upvote
-    if current_user.voted?(@link)
-      @vote = current_user.votes.where(link: @link)
-      @vote.destroy_all
-    else
-      @vote = current_user.upvote(@link)
-      @new_vote = true
-    end
-    authorize @vote
-
-    @link.calc_points
+    create_or_destroy_vote
 
     respond_to do |format|
       format.html { redirect_back fallback_location: links_path }
@@ -31,16 +11,7 @@ class VotesController < ApplicationController
   end
 
   def downvote
-    if current_user.voted?(@link)
-      @vote = current_user.votes.where(link: @link)
-      @vote.destroy_all
-    else
-      @vote = current_user.downvote(@link)
-      @new_vote = true
-    end
-    authorize @vote
-
-    @link.calc_points
+    create_or_destroy_vote
 
     respond_to do |format|
       format.html { redirect_back fallback_location: links_path }
@@ -50,15 +21,24 @@ class VotesController < ApplicationController
 
   private
 
-  def create_or_destroy_vote_for(link)
-    if current_user.voted?(link)
-      @vote = current_user.votes.where(link: link)
-      @vote.destroy_all
+  def create_or_destroy_vote
+    if current_user.voted?(@link)
+      destroy_vote
     else
-      @vote = @link.votes.create(value: params[:value], user: current_user)
-      @new_vote = true
+      create_vote
     end
     authorize @vote
+    @link.calc_points
+  end
+
+  def destroy_vote
+    @vote = current_user.votes.where(link: @link)
+    @vote.destroy_all
+  end
+
+  def create_vote
+    @new_vote = true
+    @vote = params[:action] == "upvote" ? current_user.upvote(@link) : current_user.downvote(@link)
   end
 
   def find_link
