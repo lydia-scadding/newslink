@@ -20,7 +20,7 @@ class CommentsTest < ApplicationSystemTestCase
     visit link_url(@comment.link)
 
     within("#comment-#{@comment.id}") do
-      click_on "Edit"
+      click_on "edit"
     end
     fill_in "Enter comment", with: "Updated text"
     click_on "Update Comment"
@@ -32,7 +32,7 @@ class CommentsTest < ApplicationSystemTestCase
     visit link_url(@comment.link)
 
     accept_confirm do
-      within("#comment-#{@comment.id}") { click_on "Delete" }
+      within("#comment-#{@comment.id}") { click_on "delete" }
     end
 
     assert_current_path(link_path(@comment.link))
