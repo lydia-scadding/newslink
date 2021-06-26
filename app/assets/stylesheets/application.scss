@@ -24,3 +24,10 @@ body {
 hr {
   margin: 0;
 }
+
+a {
+  color: $hn-blue;
+  &:hover {
+    color: $hn-blue;
+  }
+}
