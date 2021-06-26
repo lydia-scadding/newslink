@@ -1,4 +1,4 @@
-<%= render "shared/link_card", link: @link %>
+<%= render @link %>
 
 <div class="container-show">
   <p class="mb-3 link-description">- <%= @link.description %></p>
@@ -8,11 +8,7 @@
     </div>
   </div>
   <div id="comments">
-    <% if @comments %>
-      <% @comments.each do |comment| %>
-        <%= render "shared/comment_card", comment: comment %>
-      <% end %>
-    <% end %>
+    <%= render @comments %>
   </div>
 </div>
 

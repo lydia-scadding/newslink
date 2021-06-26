@@ -6,9 +6,9 @@ if (errorsDiv) {
 
 var commentsDiv = document.querySelector("#comments");
 var formInput = document.querySelector("#comment_body");
-// var newComment = '<%=j render partial: "shared/comment_card", locals: { comment: @comment } %> ';
+// var newComment = '<%=j render @comment %> ';
 // console.log(newComment);
-commentsDiv.insertAdjacentHTML('afterbegin', '<%=j render partial: "shared/comment_card", locals: { comment: @comment } %> ');
+commentsDiv.insertAdjacentHTML('afterbegin', '<%=j render @comment %> ');
 formInput.value = "";
 var commentCount = document.querySelector("#link-<%= @link.id %>-comments");
 commentCount.innerHTML = "<%= pluralize @link.comments.size, 'comment' %>";
