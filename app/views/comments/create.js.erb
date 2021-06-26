@@ -1,11 +1,12 @@
+var formInput = document.querySelector("#comment_body");
 var errorsDiv = document.querySelector(".invalid-feedback");
 if (errorsDiv) {
   errorsDiv.style.display = 'none';
-  document.querySelector("#comment_body").classList.remove('is-invalid');
+  formInput.classList.remove('is-invalid');
 }
 
 document.querySelector("#comments").insertAdjacentHTML('afterbegin', '<%=j render @comment %> ');
-document.querySelector("#comment_body").value = "";
+formInput.value = "";
 // var newComment = '<%=j render @comment %> ';
 // console.log(newComment);
 document.querySelector("#link-<%= @link.id %>-comments").innerHTML = "<%= pluralize @link.comments.size, 'comment' %>";
