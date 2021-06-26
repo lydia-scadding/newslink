@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to @link, notice: "Comment successfully created" }
         format.js
       else
-        format.html { redirect_to @link, notice: "Comment not saved. Ensure you have entered a comment." }
+        format.html { redirect_to @link, alert: "Comment not saved. Ensure you have entered a comment." }
         format.js { render action: "errors" }
       end
     end

@@ -2,13 +2,7 @@ var votes = document.querySelector("#link-<%= @link.id %> .votes");
 votes.querySelector(".link-points").innerText = <%= @link.points %>;
 votes.querySelectorAll(".upvote, .downvote").forEach(element => element.classList.remove("active"));
 
-<% if @new_vote && @is_upvote %>
+<% if @new_vote %>
   votes.querySelector(".upvote").classList.add("active");
-<% elsif @new_vote %>
-  votes.querySelector(".downvote").classList.add("active");
 <% end %>
-
-// var card = document.querySelector("#link-<%= @link.id %>");
-// card.outerHTML = "<%=j render partial: 'shared/link_card', locals: { link: @link } %>";
-
 

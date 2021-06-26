@@ -5,7 +5,11 @@ class VotePolicy < ApplicationPolicy
     end
   end
 
-  def create?
+  def upvote?
     true
+  end
+
+  def downvote?
+    upvote?
   end
 end
