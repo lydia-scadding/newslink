@@ -1,22 +1,22 @@
 <%= render "shared/link_card", link: @link %>
 
-<p class="pl-3 mb-3 link-description"><%= @link.description %></p>
-
-<div class="container">
+<div class="container-show">
+  <p class="mb-3 link-description"><%= @link.description %></p>
   <div class="row">
     <div class="col-12 col-lg-6">
       <%= render "comments/form", link: @link, comment: @comment %>
     </div>
   </div>
+  <div class="comments">
+    <% if @comments %>
+      <% @comments.each do |comment| %>
+        <%= render "shared/comment_card", comment: comment %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
-<div class="container comments">
-  <% if @comments %>
-    <% @comments.each do |comment| %>
-      <%= render "shared/comment_card", comment: comment %>
-    <% end %>
-  <% end %>
-</div>
+
 
 
 
