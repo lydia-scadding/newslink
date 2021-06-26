@@ -25,6 +25,14 @@ class User < ApplicationRecord
     votes.exists?(link: link, value: -1)
   end
 
+  def upvote(link)
+    votes.create(value: 1, link: link)
+  end
+
+  def downvote(link)
+    votes.create(value: -1, link: link)
+  end
+
   private
 
   def email_required?

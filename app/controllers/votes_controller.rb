@@ -12,13 +12,12 @@ class VotesController < ApplicationController
   #   end
   # end
 
-
   def upvote
     if current_user.voted?(@link)
       @vote = current_user.votes.where(link: @link)
       @vote.destroy_all
     else
-      @vote = @link.votes.create(value: 1, user: current_user)
+      @vote = current_user.upvote(@link)
       @new_vote = true
     end
     authorize @vote
@@ -36,7 +35,7 @@ class VotesController < ApplicationController
       @vote = current_user.votes.where(link: @link)
       @vote.destroy_all
     else
-      @vote = @link.votes.create(value: -1, user: current_user)
+      @vote = current_user.downvote(@link)
       @new_vote = true
     end
     authorize @vote
