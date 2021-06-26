@@ -7,7 +7,7 @@
       <%= render "comments/form", link: @link, comment: @comment %>
     </div>
   </div>
-  <div class="comments">
+  <div id="comments">
     <% if @comments %>
       <% @comments.each do |comment| %>
         <%= render "shared/comment_card", comment: comment %>

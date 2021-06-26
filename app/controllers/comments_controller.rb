@@ -15,12 +15,6 @@ class CommentsController < ApplicationController
         format.js { render action: "errors" }
       end
     end
-    # if @comment.save
-    #   redirect_to link_path(@link)
-    # else
-    #   @comments = @link.comments
-    #   render 'links/show'
-    # end
   end
 
   def edit; end
@@ -36,7 +30,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
 
-    redirect_to link_path(@comment.link), notice: "Comment successfully deleted"
+    redirect_to link_path(@comment.link, anchor: "comments"), notice: "Comment successfully deleted"
   end
 
   private
