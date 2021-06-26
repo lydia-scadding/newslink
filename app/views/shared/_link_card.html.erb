@@ -23,15 +23,13 @@
             <%= link.comments.size %> comments
           <% end %>
         </span>
-        <% if params[:controller] == "links" && params[:action] == "show" %>
-          <% if user_signed_in? && policy(@link).edit? %>
-            <span class="link-action">
-               | <%= link_to 'edit', edit_link_path(@link) %> |
-            </span>
-            <span class="link-action">
-              <%= link_to 'delete', link_path(@link), method: :delete, data: { confirm: "Are you sure you want to delete this link?"} %>
-            </span>
-          <% end %>
+        <% if user_signed_in? && policy(link).edit? %>
+          <span class="link-action">
+             | <%= link_to 'edit', edit_link_path(link) %> |
+          </span>
+          <span class="link-action">
+            <%= link_to 'delete', link_path(link), method: :delete, data: { confirm: "Are you sure you want to delete this link?"} %>
+          </span>
         <% end %>
       </div>
     </div>
