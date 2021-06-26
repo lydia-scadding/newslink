@@ -4,12 +4,9 @@ if (errorsDiv) {
   document.querySelector("#comment_body").classList.remove('is-invalid');
 }
 
-var commentsDiv = document.querySelector("#comments");
-var formInput = document.querySelector("#comment_body");
+document.querySelector("#comments").insertAdjacentHTML('afterbegin', '<%=j render @comment %> ');
+document.querySelector("#comment_body").value = "";
 // var newComment = '<%=j render @comment %> ';
 // console.log(newComment);
-commentsDiv.insertAdjacentHTML('afterbegin', '<%=j render @comment %> ');
-formInput.value = "";
-var commentCount = document.querySelector("#link-<%= @link.id %>-comments");
-commentCount.innerHTML = "<%= pluralize @link.comments.size, 'comment' %>";
+document.querySelector("#link-<%= @link.id %>-comments").innerHTML = "<%= pluralize @link.comments.size, 'comment' %>";
 
