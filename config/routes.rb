@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   resources :links, except: :index do
     resources :comments, only: [:create]
+    collection do
+      get "newest", to: "links#newest"
+    end
     member do
       post "upvote", to: "votes#upvote"
       post "downvote", to: "votes#downvote"

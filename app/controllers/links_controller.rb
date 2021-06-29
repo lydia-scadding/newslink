@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :newest]
   before_action :set_link, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -9,6 +9,10 @@ class LinksController < ApplicationController
   def show
     @comments = @link.comments.includes(:user).order(created_at: :desc)
     @comment = Comment.new
+  end
+
+  def newest
+    @links = policy_scope(Link).order(created_at: :desc)
   end
 
   def new

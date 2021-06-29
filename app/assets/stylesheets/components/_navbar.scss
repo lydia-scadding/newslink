@@ -1,6 +1,8 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: $hn-pink;
+  border: 3px solid rgb(150, 150, 150);
+  border-bottom: none;
 }
 
 .navbar-lewagon .navbar-collapse {

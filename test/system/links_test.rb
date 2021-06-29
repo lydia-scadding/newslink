@@ -38,4 +38,11 @@ class LinksTest < ApplicationSystemTestCase
 
     assert_current_path(root_path)
   end
+
+  test "can visit the newest links page" do
+    visit root_url
+    within(".navbar") { click_on "newest" }
+
+    assert_current_path(newest_links_path)
+  end
 end

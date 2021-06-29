@@ -11,6 +11,8 @@ class Link < ApplicationRecord
             presence: true,
             format: { with: %r{\Ahttps?://} }
 
+  scope :by_date, -> { order(created_at: :desc) }
+
   def calc_points
     update_attribute(:points, votes.sum(:value))
   end
