@@ -4,6 +4,12 @@
     margin-bottom: 8px;
     font-size: 16px;
   }
+  .parent-link a {
+    color: $hn-green;
+    &:hover {
+      color: $hn-green;
+    }
+  }
 }
 
 .comment-data {
