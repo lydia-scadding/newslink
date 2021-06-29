@@ -18,7 +18,7 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "all users can view the newest links page" do
+  test "all users can visit the newest links page" do
     sign_out :user
     get newest_links_url
     assert_response :success
@@ -76,6 +76,4 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to root_url
   end
-
-  # LATER: all users can visit the all comments page
 end

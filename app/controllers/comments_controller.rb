@@ -1,5 +1,10 @@
 class CommentsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
   before_action :set_comment, only: [:edit, :update, :destroy]
+
+  def index
+    @comments = policy_scope(Comment).order(created_at: :desc)
+  end
 
   def create
     @link = Link.find_by(id: params[:link_id])

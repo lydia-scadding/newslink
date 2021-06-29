@@ -38,6 +38,13 @@ class CommentsTest < ApplicationSystemTestCase
     assert_current_path(link_path(@comment.link))
   end
 
+  test "can view all comments" do
+    visit root_url
+
+    within(".navbar") { click_on "comments" }
+    assert_selector ".comment-card", count: Comment.all.size
+  end
+
   test "all comments on a link are displayed on show page" do
     visit link_url(@link)
 

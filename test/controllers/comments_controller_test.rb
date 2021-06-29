@@ -7,6 +7,12 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     @comment = comments(:comment1)
   end
 
+  test "all users can visit the comments page" do
+    sign_out :user
+    get comments_url
+    assert_response :success
+  end
+
   test "can create a comment if logged in" do
     assert_difference('Comment.count') do
       post link_comments_url(@link), params: { comment: { body: "Thanks for posting this link!"}, link_id: @link.id }
