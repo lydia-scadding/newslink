@@ -9,16 +9,17 @@
 
 .votes p {
   margin-bottom: 0;
+  font-weight: lighter;
 }
 
 .votes i {
-  color: $hn-grey;
+  color: rgb(120, 120, 120);
   &:hover {
-    color: $hn-blue;
+    color: #CD113B;
     cursor: pointer;
   }
 }
 
 i.active {
-  color: $hn-blue;
+  color: #CD113B;
 }
