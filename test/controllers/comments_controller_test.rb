@@ -20,6 +20,15 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to link_url(@link)
   end
 
+  test "cannot create a comment if not logged in" do
+    sign_out :user
+    assert_no_difference('Comment.count') do
+      post link_comments_url(@link), params: { comment: { body: "Thanks for posting this link!"}, link_id: @link.id }
+    end
+
+    assert_redirected_to new_user_session_url
+  end
+
   test "cannot create a comment with invalid attributes" do
     assert_no_difference('Comment.count') do
       post link_comments_url(@link), params: { comment: { body: ""}, link_id: @link.id }
