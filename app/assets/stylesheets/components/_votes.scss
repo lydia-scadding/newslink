@@ -13,13 +13,28 @@
 }
 
 .votes i {
-  color: rgb(120, 120, 120);
+  color: rgb(170, 170, 170);
   &:hover {
-    color: #CD113B;
     cursor: pointer;
   }
 }
 
-i.active {
+i.upvote.active {
+  color: $hn-green;
+}
+
+i.upvote {
+  &:hover {
+    color: $hn-green;
+  }
+}
+
+i.downvote.active {
   color: #CD113B;
+}
+
+i.downvote {
+  &:hover {
+    color: #CD113B;
+  }
 }
