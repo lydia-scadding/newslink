@@ -5,10 +5,10 @@
 
 .link-title {
   font-size: 18px;
-  color: $hn-green;
+  //color: $hn-green;
   display: inline-block;
   &:hover {
-    color: $hn-green;
+    //color: $hn-green;
   }
 }
 
@@ -23,12 +23,12 @@
   font-size: 12px;
 }
 
-.link-comments a {
-  color: $hn-green;
-  &:hover {
-    color: $hn-green;
-  }
-}
+// .link-comments a {
+//   color: $hn-green;
+//   &:hover {
+//     color: $hn-green;
+//   }
+// }
 
 .link-main {
   padding-top: 16px;
