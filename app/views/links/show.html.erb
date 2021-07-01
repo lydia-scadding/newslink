@@ -3,16 +3,11 @@
 <div class="container-show">
   <p class="mb-3 link-description">- <%= @link.description %></p>
   <div class="row">
-    <div class="col-12 col-lg-6 mb-5">
+    <div class="col-12 col-lg-6">
       <%= render "comments/form", link: @link, comment: @comment %>
     </div>
   </div>
-  <div id="comments">
+  <div id="comments" class="mt-4">
     <%= render @comments %>
   </div>
 </div>
-
-
-
-
-

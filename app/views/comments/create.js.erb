@@ -1,15 +1,22 @@
-var newComment = '<%=j render @comment %> ';
+document.querySelector("#comments").insertAdjacentHTML('afterbegin', '<%=j render @comment %>');
+document.querySelector("#link-<%= @link.id %>-comments").innerHTML = "<%= pluralize @link.comments.size, 'comment' %>";
 
-document.querySelector("#comments").insertAdjacentHTML('afterbegin', newComment);
-document.getElementById(`comment-<%= @comment.id %>`).classList.add("highlight");
+var newComment = document.getElementById(`comment-<%= @comment.id %>`);
 
-var removeHighlight = () => {
-  document.getElementById(`comment-<%= @comment.id %>`).classList.remove("highlight");
+var addHighlight = (comment) => {
+  comment.classList.add("highlight");
 }
 
-setTimeout(removeHighlight, 3000);
+var removeHighlight = (comment) => {
+  comment.classList.remove("highlight");
+}
 
-document.querySelector("#link-<%= @link.id %>-comments").innerHTML = "<%= pluralize @link.comments.size, 'comment' %>";
+document.querySelectorAll(".comment-card").forEach(removeHighlight);
+addHighlight(newComment);
+
+<%# setTimeout(() => {
+  removeHighlight(newComment);
+}, 3500); %>
 
 var formInput = document.querySelector("#comment_body");
 formInput.value = "";
