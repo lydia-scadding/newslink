@@ -1,4 +1,14 @@
-document.querySelector("#comments").insertAdjacentHTML('afterbegin', '<%=j render @comment %> ');
+var newComment = '<%=j render @comment %> ';
+
+document.querySelector("#comments").insertAdjacentHTML('afterbegin', newComment);
+document.getElementById(`comment-<%= @comment.id %>`).classList.add("highlight");
+
+var removeHighlight = () => {
+  document.getElementById(`comment-<%= @comment.id %>`).classList.remove("highlight");
+}
+
+setTimeout(removeHighlight, 3000);
+
 document.querySelector("#link-<%= @link.id %>-comments").innerHTML = "<%= pluralize @link.comments.size, 'comment' %>";
 
 var formInput = document.querySelector("#comment_body");
@@ -9,6 +19,3 @@ if (errorsDiv) {
   errorsDiv.style.display = 'none';
   formInput.classList.remove('is-invalid');
 }
-
-// var newComment = '<%=j render @comment %> ';
-// console.log(newComment);

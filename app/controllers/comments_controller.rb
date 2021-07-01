@@ -1,13 +1,13 @@
 class CommentsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :find_link, only: [:create]
 
   def index
     @comments = policy_scope(Comment).order(created_at: :desc)
   end
 
   def create
-    @link = Link.find_by(id: params[:link_id])
     @comment = Comment.new(user: current_user, body: comment_params[:body], link: @link)
     authorize @comment
 
@@ -47,5 +47,9 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:body)
+  end
+
+  def find_link
+    @link = Link.find_by(id: params[:link_id])
   end
 end
