@@ -12,7 +12,12 @@
   background-color: rgb(220, 220, 220);
   border: 3px solid rgb(70, 70, 70);
   font-weight: lighter;
+  position: relative;
+  transition: 0s;
+  top: 0;
+  left: 0;
   &:hover {
-    background-color: rgb(240, 240, 240);
+    top: 1px;
+    left: 1px;
   }
 }
