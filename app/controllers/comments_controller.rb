@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
         format.js
       else
         format.html { redirect_to @link, alert: "Comment not saved. Ensure you have entered a comment." }
-        format.js { render action: "errors" }
+        format.js { render action: "errors", status: 422 }
       end
     end
   end

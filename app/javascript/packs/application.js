@@ -27,9 +27,9 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import { initAjaxRedirect } from '../components/init_ajax_redirect';
+import { initNewComment } from '../components/init_new_comment';
 
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
   initAjaxRedirect();
+  initNewComment();
 });
