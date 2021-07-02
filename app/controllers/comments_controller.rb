@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      redirect_to link_path(@comment.link), notice: "Comment successfully updated"
+      redirect_to link_path(@comment.link, anchor: "comment-#{@comment.id}"), notice: "Comment successfully updated"
     else
       render :edit
     end
