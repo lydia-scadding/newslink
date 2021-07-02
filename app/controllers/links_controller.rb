@@ -7,12 +7,12 @@ class LinksController < ApplicationController
   end
 
   def show
-    @comments = @link.comments.includes(:user).order(created_at: :desc)
+    @comments = @link.comments.includes(:user).by_date
     @comment = Comment.new
   end
 
   def newest
-    @links = policy_scope(Link).order(created_at: :desc)
+    @links = policy_scope(Link).by_date
   end
 
   def new
