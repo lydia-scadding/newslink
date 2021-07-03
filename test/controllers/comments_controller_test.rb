@@ -42,7 +42,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test "can update comment if authorized" do
     put comment_url(@comment), params: { comment: { body:"Different text" }}
-    assert_redirected_to link_url(@comment.link)
+    assert_redirected_to link_url(@comment.link, anchor: "comment-#{@comment.id}")
     @comment.reload
     assert_equal "Different text", @comment.body
   end
