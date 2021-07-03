@@ -3,7 +3,7 @@ class LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
 
   def index
-    @links = policy_scope(Link).includes(:user, :comments).order(points: :desc)
+    @links = policy_scope(Link).includes(:user, :comments).by_points
   end
 
   def show
