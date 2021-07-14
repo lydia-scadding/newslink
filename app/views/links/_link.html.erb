@@ -19,7 +19,7 @@
       <span><%= time_ago_in_words(link.created_at) %> ago | </span>
       <span class="link-comments">
         <%= link_to link_path(link), id: "link-#{link.id}-comments" do %>
-          <%= link.comments.size %> comments
+          <%= pluralize(link.comments.size, 'comment') %>
         <% end %>
       </span>
       <% if user_signed_in? && policy(link).edit? %>

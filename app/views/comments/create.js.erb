@@ -2,4 +2,4 @@ var commentsDiv = document.querySelector("#comments");
 commentsDiv.insertAdjacentHTML('afterbegin', '<%=j render @comment %>');
 
 var commentsCount = document.querySelector("#link-<%= @link.id %>-comments");
-commentsCount.innerHTML = "<%= pluralize @link.comments.size, 'comment' %>";
+commentsCount.innerHTML = "<%= pluralize(@link.comments.size, 'comment') %>";
